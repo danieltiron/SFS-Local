@@ -3,7 +3,6 @@ package tests;
 
 import framework.GoogleHomepage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
@@ -12,39 +11,68 @@ import org.testng.annotations.*;
  */
 
 public class SmokeTests{
-    @Parameters({"browserName", "url"})
-    @BeforeTest
-    public void setup(@Optional String browserName, @Optional String url){
-        DriverManager.setDriver(DriverManager.chooseDriver(browserName));
-        DriverManager.getDriver().get(url);
+    private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
+    @Parameters("url")
+    @BeforeMethod
+    public void setup(@Optional String url){
+        driver.set(new FirefoxDriver());
+        driver.get().get(url);
     }
 
-    @AfterTest
+    @AfterMethod
     public void close(){
-        DriverManager.getDriver().close();
+        driver.get().close();
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void test1(){
-        new GoogleHomepage()
+        new GoogleHomepage(driver.get())
+                .numaraAiurea()
                 .searchFor("sad");
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void test2(){
-        new GoogleHomepage()
+        new GoogleHomepage(driver.get())
+                .numaraAiurea()
                 .searchFor("dasdsad");
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void test3(){
-        new GoogleHomepage()
+        new GoogleHomepage(driver.get())
+                .numaraAiurea()
                 .searchFor("s saad ad");
     }
-
-    @Test
-    public void test4(){
-        new GoogleHomepage()
-                .searchFor("sdafd d");
-    }
+//
+//    @Test
+//    public void test4(){
+//        new GoogleHomepage()
+//                .searchFor("sdafd d");
+//    }
+//
+//    @Test
+//    public void test5(){
+//        new GoogleHomepage()
+//                .searchFor("sdafd d");
+//    }
+//
+//    @Test
+//    public void test6(){
+//        new GoogleHomepage()
+//                .searchFor("sdafd d");
+//    }
+//
+//    @Test
+//    public void test7(){
+//        new GoogleHomepage()
+//                .searchFor("sdafd d");
+//    }
+//
+//    @Test
+//    public void test8(){
+//        new GoogleHomepage()
+//                .searchFor("sdafd d");
+//    }
 }
