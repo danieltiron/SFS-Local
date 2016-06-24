@@ -4,21 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import tests.WebDriverManager;
 
 /**
  * Created by TironM on 17-Jun-16.
  */
 
-public class GoogleHomepage{
+public class GoogleHomepage extends PageBase{
     @FindBy(name = "q")
     private WebElement searchInput;
-
-    private WebDriver driver;
-
-    public GoogleHomepage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     public GoogleHomepage searchFor(String text){
         searchInput.sendKeys(text);
@@ -26,7 +20,7 @@ public class GoogleHomepage{
         return this;
     }
 
-    public GoogleHomepage numaraAiurea(){
+    public GoogleHomepage refreshAiurea(){
         for (int i = 0; i < 5; i++) {
             driver.navigate().refresh();
         }
