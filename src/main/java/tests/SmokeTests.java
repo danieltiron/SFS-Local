@@ -10,23 +10,26 @@ import org.testng.annotations.*;
  */
 
 public class SmokeTests extends TestBase{
-    @Test(groups = "smoke")
+    @Test
     public void test1(){
         new GoogleHomepage()
+                .openPage()
                 .refreshAiurea()
                 .searchFor("sad");
     }
 
-    @Test(groups = "smoke")
+    @Test
     public void test2(){
         new GoogleHomepage()
+                .openSolution()
                 .refreshAiurea()
                 .searchFor("dasdsad");
     }
 
-    @Test(groups = "smoke")
+    @Test
     public void test3(){
         new GoogleHomepage()
+                .openPage()
                 .refreshAiurea()
                 .searchFor("s saad ad");
     }

@@ -1,10 +1,7 @@
 package framework;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import tests.WebDriverManager;
 
 /**
  * Created by TironM on 17-Jun-16.
@@ -13,6 +10,23 @@ import tests.WebDriverManager;
 public class GoogleHomepage extends PageBase{
     @FindBy(name = "q")
     private WebElement searchInput;
+
+    public GoogleHomepage() {
+        super();
+        pageUrl = "/dsasadada";
+    }
+
+    @Override
+    public GoogleHomepage openSolution() {
+        super.openSolution();
+        return this;
+    }
+
+    @Override
+    public GoogleHomepage openPage() {
+        super.openPage();
+        return this;
+    }
 
     public GoogleHomepage searchFor(String text){
         searchInput.sendKeys(text);
@@ -29,6 +43,5 @@ public class GoogleHomepage extends PageBase{
 
     public String checkPageTitle(){
         return driver.getTitle();
-
     }
 }

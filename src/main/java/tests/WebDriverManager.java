@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WebDriverManager {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private static WebDriver d;
+    static String baseUrl = "";
 
     public static WebDriver getDriver() {
         return driver.get();
@@ -30,5 +31,13 @@ public class WebDriverManager {
             return d;
         }
         return d;
+    }
+
+    public static void openSolution(){
+        WebDriverManager.getDriver().get(baseUrl);
+    }
+
+    public static void openPage(String url){
+        WebDriverManager.getDriver().get(baseUrl + url);
     }
 }

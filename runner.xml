@@ -5,7 +5,11 @@
     <!--<parameter name="xmlHub" value="http://172.18.20.10:4444/wd/hub"/>-->
     <test name="Testing nothing">
         <classes>
-            <class name="tests.SmokeTests"/>
+            <class name="tests.SmokeTests">
+                <methods>
+                    <include name="test3"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

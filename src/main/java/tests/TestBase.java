@@ -14,7 +14,7 @@ public class TestBase {
     @BeforeMethod
     public void setup(@Optional String browserName, @Optional String url){
         WebDriverManager.setDriver(WebDriverManager.chooseDriver(browserName));
-        WebDriverManager.getDriver().get(url);
+        WebDriverManager.baseUrl = url;
     }
 
     @AfterMethod

@@ -10,7 +10,19 @@ import tests.WebDriverManager;
 
 class PageBase {
     WebDriver driver = WebDriverManager.getDriver();
+    String pageUrl = "/";
+
     PageBase(){
         PageFactory.initElements(driver, this);
+    }
+
+    PageBase openSolution(){
+        WebDriverManager.openSolution();
+        return this;
+    }
+
+    PageBase openPage(){
+        WebDriverManager.openPage(pageUrl);
+        return this;
     }
 }
