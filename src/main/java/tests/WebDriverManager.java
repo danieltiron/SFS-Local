@@ -9,18 +9,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 
 public class WebDriverManager {
-    public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-    public static WebDriver d;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private static WebDriver d;
 
     public static WebDriver getDriver() {
         return driver.get();
     }
 
-    public static void setDriver(WebDriver d) {
+    static void setDriver(WebDriver d) {
             driver.set(d);
     }
 
-    public static WebDriver chooseDriver(String browserName){
+    static WebDriver chooseDriver(String browserName){
         if (browserName.contains("firefox")){
             d = new FirefoxDriver();
             return d;
